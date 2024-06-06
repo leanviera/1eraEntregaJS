@@ -1,0 +1,13 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+}
+h1{
+    color: #111111;
+}
+#resultado, #historial {
+    margin-top: 20px;
+}
+.simular, .historial-item{
+    margin-bottom: 15px;
+}
