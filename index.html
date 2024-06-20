@@ -8,11 +8,22 @@
 </head>
 <body>
     <h1>Simulador de Tiempo de Viaje en Tren</h1>
+    <div class="input-group">
+        <label for="distancia">Distancia (km): </label>
+        <input type="number" id="distancia" min="0">
+    </div>
+
+    <div class="input-group">
+        <label for="velocidad">Velocidad (km/h): </label>
+        <input type="number" id="velocidad" min="0">
+    </div>
+
     <button id="simulacion">Iniciar Simulación</button>
+    <button id="reset">Restablecer Historial</button>
     <div id="resultado"></div>
     <h2>Historial de Simulaciones</h2>
     <div id="historial"></div>
 
-    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

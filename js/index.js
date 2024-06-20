@@ -8,7 +8,6 @@ function tiempoViaje(distancia, velocidad){
     return { horas: horas, minutos: minutos };
 }
 
-// alert('Bienvenido al simulador de tiempo de viaje!')
 
 function agregarResultado(distancia, velocidad, tiempo) {
     const resultadoDiv = document.getElementById('resultado')
@@ -36,14 +35,19 @@ function agregarHistorial(distancia, velocidad, tiempo) {
 
 
 function inicioSimulacion(){
-    let distancia = parseFloat(prompt('Ingrese la distancia entre las estaciones en kilómetros'))
-    while (isNaN(distancia) || distancia <= 0 ){
-        distancia = parseFloat(prompt('Ingrese una distancia válidad en kilómetros'))
+    const distanciaInput = document.getElementById('distancia');
+    const velocidadInput = document.getElementById('velocidad')
+    
+    let distancia = parseFloat(distanciaInput.value)
+    if (isNaN(distancia) || distancia <= 0) {
+        alert('Ingrese una distancia valida en kilometros')
+        return;
     }
 
-    let velocidad = parseFloat(prompt('Ingrese la velocidad del tren en kilómetros por hora')); 
-    while (isNaN(velocidad) || velocidad <= 0){
-        velocidad = parseFloat(prompt('Ingrese una velocidad válida en kilometros por hora'))
+    let velocidad = parseFloat(velocidadInput.value)
+    if (isNaN(velocidad) || velocidad <= 0) {
+        alert('Ingrese una velocidad valida en kilometros por hora.')
+        return;
     }
 
     let tiempo = tiempoViaje(distancia, velocidad);
@@ -52,12 +56,11 @@ function inicioSimulacion(){
     agregarHistorial(distancia, velocidad, tiempo)
 }
 
-document.getElementById('simulacion').addEventListener('click', inicioSimulacion)
+function restablecerHistorial() {
+    historial = [];
+    document.getElementById('historial').innerHTML = '';
+    document.getElementById('resultado').innerHTML = '';
+}
 
-
-
-
-
-
-
-// alert('Para recorrer una distancia de '+ distancia + 'km a una velocidad constante de ' + velocidad + 'km por hora, se necesitará aproximadamente ' +tiempo.horas + 'horas y ' + tiempo.minutos + ' minutos.')
+document.getElementById('simulacion').addEventListener('click', inicioSimulacion);
+document.getElementById('reset').addEventListener('click', restablecerHistorial);
